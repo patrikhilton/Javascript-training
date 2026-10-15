@@ -14,3 +14,4 @@ console.log(discount);
 let newPrice = price - discount;
 console.log(newPrice);
 
+console.log(`Your new price is: $${newPrice}`);
