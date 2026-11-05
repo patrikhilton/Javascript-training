@@ -1,6 +1,7 @@
 const account = {
   accountName: "Patrik",
   balance: 100,
+   isOpen: true,
 
   getBalance: function () {
     alert(`Your balance is: ${this.balance} kr`);
