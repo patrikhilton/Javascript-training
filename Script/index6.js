@@ -22,3 +22,13 @@ function addItem() {
   });
 }
 
+function listItems() {
+  for (let i = 0; i < shoppingList.length; i++) {
+let shoppingItem = shoppingList[i];
+console.log(`${shoppingItem.quantity} ${shoppingItem.name} from ${shoppingItem.shop} — bought: ${shoppingItem.isBought}`);
+  }
+}
+
+addItem();
+addItem();
+listItems();
