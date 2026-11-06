@@ -40,7 +40,32 @@ for (let i = 0; i < shoppingList.length; i++) {
   }
 }
 
-addItem();
-addItem();
-markAsBought("bread");
-listItems();
+
+while (running) {
+  const choice = prompt(`
+Shopping List
+1. Add Item
+2. List Items
+3. Mark Item as Bought
+4. Exit
+Enter your choice:`);
+
+  switch (choice) {
+    case "1":
+      addItem();
+      break;
+    case "2":
+      listItems();
+      break;
+    case "3":
+      const name = prompt("Enter the name of the item to mark as bought:");
+      markAsBought(name);
+      break;
+    case "4":
+      running = false;
+      alert("Goodbye!");
+      break;
+    default:
+      alert("Invalid choice.");
+  }
+}
