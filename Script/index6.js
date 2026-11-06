@@ -29,6 +29,18 @@ console.log(`${shoppingItem.quantity} ${shoppingItem.name} from ${shoppingItem.s
   }
 }
 
+
+function markAsBought(name) {
+for (let i = 0; i < shoppingList.length; i++) {
+    let shoppingItem = shoppingList[i];
+    if (shoppingItem.name === name) {
+      shoppingItem.isBought = true;
+      break;
+    }
+  }
+}
+
 addItem();
 addItem();
+markAsBought("bread");
 listItems();
