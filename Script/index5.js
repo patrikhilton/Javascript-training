@@ -12,8 +12,8 @@ const account = {
   },
 
   deposit: function (amount) {
-    if (amount <= 0) {
-      this.accountError("The amount must be more than 0");
+    if (isNaN(amount) || amount <= 0) {
+      this.accountError("Please enter a valid amount greater than 0");
       return;
     }
     this.balance += amount;
@@ -21,7 +21,7 @@ const account = {
   },
 
   withdrawal: function (amount) {
-    if (amount <= 0) {
+    if (isNaN(amount) || amount <= 0) {
       this.accountError("The amount must be more than 0");
       return;
     }
@@ -44,14 +44,35 @@ const account = {
 
 };
 
-account.getAccountName();   // Account holder: Patrik
-account.getBalance();       // Your balance is: 100 kr
-account.deposit(50);        // You deposited 50 kr. New balance: 150 kr
-account.withdrawal(500);    // Error: Not enough money. Your balance is 150 kr
-account.deposit(-20);       // Error: The amount must be more than 0
-account.withdrawal(30);     // You withdrew 30 kr. New balance: 120 kr
-account.getBalance();       // Your balance is: 120 kr
-account.exitAccount();      // Goodbye, Patrik! You have left your account.
+function atm() {
+  const message = parseFloat(
+    prompt("Select a choice 1.) See balance 2.) Make a deposit 3.) Make a withdrawal 4.) Get account name 5.) Exit")
+  );
 
-console.log(account.accountName);
-console.log(account.balance);
+  switch (message) {
+    case 1:
+    account.getBalance(); break;
+    case 2:
+    const depositText = prompt("How much do you want to deposit?");
+  const depositAmount = parseFloat(depositText);
+  account.deposit(depositAmount);
+  break;
+    case 3:
+      const withdrawalText = prompt("How much do you want to withdraw?");
+  const withdrawalAmount = parseFloat(withdrawalText);
+  account.withdrawal(withdrawalAmount);
+  break;
+    case 4:
+    account.getAccountName(); break;
+    case 5:
+      account.exitAccount();
+  break;
+  default:
+  account.accountError("Invalid choice. Please choose 1-5.");
+  }
+    if (account.isOpen) {
+    atm();
+  }
+}
+
+atm();
